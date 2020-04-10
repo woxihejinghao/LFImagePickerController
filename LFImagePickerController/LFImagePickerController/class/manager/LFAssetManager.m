@@ -867,7 +867,8 @@ static LFAssetManager *manager;
                         }
                         if (thumbnailCompressSize > 0) {
                             /** 缩略图 */
-                            thumbnailData = [source lf_fastestCompressImageDataWithSize:thumbnailCompress imageSize:imageData.length];
+///TODO:修改图片压缩的方法(HJH留)
+                            thumbnailData = [source jh_fastestCompressImageDataWithSize:1024*1024];
                         }
                     }
                     

@@ -42,6 +42,47 @@
 }
 
 #pragma mark - 压缩图片接口
+-(NSData *)jh_fastestCompressImageDataWithSize:(CGFloat)maxSize{
+    CGFloat compression = 1;
+    NSData *data = UIImageJPEGRepresentation(self, compression);
+    if (data.length < maxSize) {
+        return data;
+    }
+    CGFloat max = 1;
+    CGFloat min = 0;
+    
+    for (int i = 0; i < 6; ++i) {
+        
+        UIImage *resultImage = [UIImage imageWithData:data];
+        CGFloat ratio = (CGFloat)maxSize / data.length;
+        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)), (NSUInteger)(resultImage.size.height * sqrtf(ratio)));
+        UIGraphicsBeginImageContext(size);
+        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        resultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        data = UIImageJPEGRepresentation(resultImage, 1);
+        compression = (max + min) / 2;
+
+        if (data.length <= maxSize) {
+            return data;
+        }
+        if (data.length < maxSize) {
+            min = compression;
+        } else if (data.length > maxSize * 0.9) {
+            max = compression;
+        } else {
+            break;
+        }
+
+        data = UIImageJPEGRepresentation(resultImage, compression);
+        if (data.length <= maxSize) {
+            return data;
+        }
+    }
+    return data;
+    
+}
 - (NSData *)lf_fastestCompressImageSize:(CGFloat)size imageSize:(NSUInteger)imageSize
 {
     @autoreleasepool {

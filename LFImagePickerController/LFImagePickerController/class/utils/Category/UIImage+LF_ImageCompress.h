@@ -16,6 +16,8 @@
 /** 快速压缩 压缩到大约指定体积大小(kb) 返回data, 小于size指定大小，返回nil */
 - (NSData *)lf_fastestCompressImageDataWithSize:(CGFloat)size;
 - (NSData *)lf_fastestCompressImageDataWithSize:(CGFloat)size imageSize:(NSUInteger)imageSize;
+//HJH新增:压缩图片和压缩尺寸结合
+- (NSData *)jh_fastestCompressImageDataWithSize:(CGFloat)maxSize;
 
 /** 快速压缩 压缩到大约指定体积缩放 返回压缩后图片(动图) */
 - (NSData *)lf_fastestCompressAnimatedImageDataWithScaleRatio:(CGFloat)ratio;
