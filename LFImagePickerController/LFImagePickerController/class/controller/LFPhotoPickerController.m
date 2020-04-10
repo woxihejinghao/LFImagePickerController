@@ -628,7 +628,7 @@ CGFloat const bottomToolBarHeight = 50.f;
                         LFPhotoEdit *photoEdit = [[LFPhotoEditManager manager] photoEditForAsset:model];
                         if (photoEdit) {
                             [[LFPhotoEditManager manager] getPhotoWithAsset:model
-                                                                 isOriginal:imagePickerVc.isSelectOriginalPhoto
+                                                                 isOriginal:true
                                                                compressSize:imagePickerVc.imageCompressSize
                                                       thumbnailCompressSize:imagePickerVc.thumbnailCompressSize
                                                                  completion:^(LFResultImage *resultImage) {

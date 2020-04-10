@@ -160,7 +160,7 @@ static LFPhotoEditManager *manager;
                     imageRatio = 50.f/minWidth;
                 }
                 /** 缩略图 */
-                thumbnailData = [source lf_fastestCompressAnimatedImageDataWithScaleRatio:imageRatio];
+                thumbnailData = [source jh_fastestCompressImageDataWithSize:1024*1024];
                 thumbnail = [UIImage LF_imageWithImageData:thumbnailData];
             } else {
                 /** 缩略图 */
@@ -168,7 +168,7 @@ static LFPhotoEditManager *manager;
 //                CGFloat th_pixelWidth = MIN(80, imageSize.width*0.5) * 2.0; // scale
 //                CGFloat th_pixelHeight = th_pixelWidth / aspectRatio;
 //                thumbnail = [source lf_scaleToSize:CGSizeMake(th_pixelWidth, th_pixelHeight)];
-                NSData *newThumbnailData = [source lf_fastestCompressImageDataWithSize:thumbnailCompress imageSize:sourceData.length];
+                NSData *newThumbnailData = [source jh_fastestCompressImageDataWithSize:1024*1024];
                 if (newThumbnailData) {
                     /** 可压缩的 */
                     thumbnailData = newThumbnailData;
