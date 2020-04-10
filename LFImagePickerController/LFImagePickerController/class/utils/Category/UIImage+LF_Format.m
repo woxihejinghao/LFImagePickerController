@@ -111,7 +111,7 @@ LFImageType LFImageDetectType(CFDataRef data) {
 //            image = [self sd_imageWithWebPData:imgData];
 //            break;
         default:
-            image = [UIImage imageWithData:imgData scale:[UIScreen mainScreen].scale];
+            image = [UIImage imageWithData:imgData];
             break;
     }
     return image;

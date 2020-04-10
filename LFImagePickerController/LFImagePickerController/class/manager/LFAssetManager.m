@@ -849,10 +849,10 @@ static LFAssetManager *manager;
                         
                         /** 原图方向更正 */
                         BOOL isFixOrientation = NO;
-                        if (self.shouldFixOrientation && source.imageOrientation != UIImageOrientationUp) {
-                            source = [source lf_fixOrientation];
-                            isFixOrientation = YES;
-                        }
+//                        if (self.shouldFixOrientation && source.imageOrientation != UIImageOrientationUp) {
+//                            source = [source lf_fixOrientation];
+//                            isFixOrientation = YES;
+//                        }
                         
                         /** 重写标记 */
                         mediaType = LFImagePickerSubMediaTypeNone;
